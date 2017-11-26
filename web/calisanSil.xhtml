@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="WEB-INF/templates/main.xhtml">
+<ui:define name="content">
+<head>
+    <title>Çalışan Sil</title>
+</head>
+<body>
+<p class="infoPanel"><h:outputText value="#{employeeManagedBean.infoMessage}" rendered="#{not empty employeeManagedBean.infoMessage}"/></p>
+<p class="infoPanel"><h:outputText value="#{employeeManagedBean.responseMessage}" rendered="#{not empty employeeManagedBean.responseMessage}"/></p>
+<h:form>
+    <h:dataTable headerClass="main_table_header">
+        <h:column>
+            <f:facet name="header">
+                TC KİMLİK NUMARASI
+                <br/>
+                <h:inputText value="#{employeeManagedBean.employeeID}" style="width: 90px" id="calisanID">
+                    <f:validator validatorId="tcIDValidator"/>
+                </h:inputText>
+            </f:facet>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:commandButton value="SİL" action="#{employeeManagedBean.deleteCalisan}"/>
+            </f:facet>
+        </h:column>
+
+    </h:dataTable>
+</h:form>
+<h:dataTable value="${employeeManagedBean.employeeList}" var="empSalary" headerClass="main_table_header" rowClasses="main_odd_row, main_even_row"
+             styleClass="main_table_style">
+    <h:column>
+        <f:facet name="header">FOTO</f:facet>
+        <h:graphicImage styleClass="employeeImageStyle" value="/image?id=#{empSalary.tcID}"/>
+    </h:column>
+    <h:column>
+        <f:facet name="header">TC KİMLİK NO</f:facet>#{empSalary.tcID}</h:column>
+    <h:column>
+        <f:facet name="header">ADI</f:facet>#{empSalary.name}</h:column>
+    <h:column>
+        <f:facet name="header">SOYADI</f:facet>#{empSalary.lastName}</h:column>
+    <h:column>
+        <f:facet name="header">MAAŞ</f:facet>#{empSalary.salary}</h:column>
+    <h:column>
+        <f:facet name="header">EKLENME TARİHİ</f:facet>#{empSalary.timestamp.toLocalDateTime()}</h:column>
+</h:dataTable>
+</body>
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,73 @@
+.div_main_header img{
+    width: 358px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.div_main_footer a{
+    margin-top: 10%;
+    text-align: center;
+    font-size: small;
+}
+#div_content{
+    text-align: center;
+}
+
+#div_content li{
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+}
+.div_main_footer{
+    text-align: center;
+    font-size: 10px;
+    margin-top: 50px;
+}
+
+.table_header{
+    color:red;
+}
+
+.table_even{
+    background-color: beige;
+}
+
+.table_odd{
+    background-color: azure;
+}
+
+.content_table{
+    border-spacing: 10px;
+}
+
+.main_table_header{
+    color:red;
+}
+
+.main_odd_row{
+    background-color: beige;
+}
+
+.main_even_row{
+    background-color: azure;
+}
+
+.main_table_style{
+    border-spacing: 10px;
+    font-family: Arial;
+}
+
+.infoPanel{
+    page-break-after: always;
+    font-family: "Lucida Console";
+    font-size: 10px;
+    text-align: left;
+    color: red;
+}
+
+.employeeImageStyle{
+    height: auto;
+    width: 150px;
+    display: block;
+}

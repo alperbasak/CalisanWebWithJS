@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="WEB-INF/templates/main.xhtml">
+   <ui:define name="content">
+      <body>
+      <div>
+   <ul id="div_content">
+      <li>
+         <a href="javascript:void(0)" onclick="sifreCalisanEkle()">Çalışan Ekle
+         </a>
+      </li>
+      <li>
+         <a href="javascript:void(0)" onclick="sifreCalisanGuncelle()">Çalışan Güncelle
+         </a>
+      </li>
+      <li>
+         <a href="javascript:void(0)" onclick="sifreCalisanSil()">Çalışan Sil
+         </a>
+      </li>
+      <li>
+      <a href="javascript:void(0)" onclick="sifreCalisanGoster()">Çalışanları Göster
+      </a>
+   </li>
+   </ul>
+
+</div>
+</body>
+   </ui:define>
+   </ui:composition>
+
+</html>

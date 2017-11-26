@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="WEB-INF/templates/main.xhtml">
+<ui:define name="content">
+<h:head>
+    <title>Yeni Çalışan Ekleme</title>
+</h:head>
+<body>
+<h:message styleClass="infoPanel" for="calisanPic"/>
+<br/>
+<h:message styleClass="infoPanel" for="calisanID"/>
+<p class="infoPanel"><h:outputText value="#{employeeManagedBean.infoMessage}" rendered="#{not empty employeeManagedBean.infoMessage}"/></p>
+<p class="infoPanel"><h:outputText value="#{employeeManagedBean.responseMessage}" rendered="#{not empty employeeManagedBean.responseMessage}"/></p>
+    <h:form enctype="multipart/form-data">
+        <h:dataTable headerClass="main_table_header">
+        <h:column>
+            <f:facet name="header">
+                <h:selectOneMenu value = "#{employeeManagedBean.date}">
+                    <f:selectItem itemValue = "0" itemLabel = "01-2017" />
+                    <f:selectItem itemValue = "1" itemLabel = "02-2017" />
+                    <f:selectItem itemValue = "2" itemLabel = "03-2017" />
+                    <f:selectItem itemValue = "3" itemLabel = "04-2017" />
+                    <f:selectItem itemValue = "4" itemLabel = "05-2017" />
+                    <f:selectItem itemValue = "5" itemLabel = "06-2017" />
+                    <f:selectItem itemValue = "6" itemLabel = "07-2017" />
+                    <f:selectItem itemValue = "7" itemLabel = "08-2017" />
+                    <f:selectItem itemValue = "8" itemLabel = "09-2017" />
+                    <f:selectItem itemValue = "9" itemLabel = "10-2017" />
+                    <f:selectItem itemValue = "10" itemLabel = "11-2017" />
+                    <f:selectItem itemValue = "11" itemLabel = "12-2017" />
+                </h:selectOneMenu>
+                <h:commandButton value="Çalışan Dökümünü Göster" action="#{employeeManagedBean.getFilterList}"/>
+            </f:facet>
+        </h:column>
+    </h:dataTable>
+    </h:form>
+
+<h:form enctype="multipart/form-data">
+    <h:dataTable headerClass="main_table_header">
+        <h:column>
+            <f:facet name="header">
+                RESİM
+                <br/>
+                <h:inputFile value="#{employeeManagedBean.employeePic}" style="width: 90px" id="calisanPic">
+                    <f:validator validatorId="picValidator"/>
+                </h:inputFile>
+            </f:facet>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                TC KİMLİK NO
+                <br/>
+                <h:inputText value="#{employeeManagedBean.employeeID}" style="width: 90px" id="calisanID">
+                    <f:validator validatorId="tcIDValidator"/>
+                </h:inputText>
+            </f:facet>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                İSİM
+                <br/>
+                <h:inputText value="#{employeeManagedBean.employeeName}" style="width: 90px"/>
+            </f:facet>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                SOYAD
+                <br/>
+                <h:inputText value="#{employeeManagedBean.employeeSurname}" style="width: 90px"/>
+            </f:facet>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                MAAŞ
+                <br/>
+                <h:inputText value="#{employeeManagedBean.employeeSalary}" style="width: 90px"/>
+            </f:facet>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:commandButton value="EKLE" action="#{employeeManagedBean.addEmployee}"/>
+            </f:facet>
+        </h:column>
+
+    </h:dataTable>
+</h:form>
+<h:dataTable value="${employeeManagedBean.filterList}" var="empSalary" headerClass="main_table_header" rowClasses="main_odd_row, main_even_row"
+             styleClass="main_table_style">
+    <h:column>
+        <f:facet name="header">FOTO</f:facet>
+    <h:graphicImage styleClass="employeeImageStyle" value="/image?id=#{empSalary.tcID}"/>
+        <!--idsi bu olanın resmini çekmek için bir servlet tanımlıycaz, idyi verecez; resmi çekecez-->
+    </h:column>
+    <h:column>
+        <f:facet name="header">TC KİMLİK NO</f:facet>#{empSalary.tcID}</h:column>
+    <h:column>
+        <f:facet name="header">ADI</f:facet>#{empSalary.name}</h:column>
+    <h:column>
+        <f:facet name="header">SOYADI</f:facet>#{empSalary.lastName}</h:column>
+    <h:column>
+        <f:facet name="header">MAAŞ</f:facet>#{empSalary.salary}</h:column>
+    <h:column>
+        <f:facet name="header">EKLENME TARİHİ</f:facet>#{empSalary.timestamp.toLocalDateTime()}</h:column>
+</h:dataTable>
+</body>
+</ui:define>
+</ui:composition>
+</html>
